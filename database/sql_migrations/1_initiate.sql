@@ -28,6 +28,7 @@ CREATE TABLE perkuliahan (
     kode_mata_kuliah VARCHAR(7) DEFAULT NULL,
     nip VARCHAR(12) DEFAULT NULL,
     nilai INT NOT NULL,
+    grade VARCHAR(12),
     CONSTRAINT fk_dosen_nip FOREIGN KEY (nip) REFERENCES dosen(nip) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_mahasiswa_nim FOREIGN KEY (nim) REFERENCES mahasiswa(nim) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_matakuliah_kode_mata_kuliah FOREIGN KEY (kode_mata_kuliah) REFERENCES matakuliah(kode_mata_kuliah) ON DELETE CASCADE ON UPDATE CASCADE
