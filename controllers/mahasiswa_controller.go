@@ -65,12 +65,13 @@ func (c *mahasiswaController) ReadMahasiswa(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, result)
 }
 
+
 func (c *mahasiswaController) UpdateMahasiswa(ctx *gin.Context)  {
-	var mahasiswa entity.Mahasiswa
+	var mah entity.Mahasiswa
 
 	nim := ctx.Param("nim")
 
-	err := ctx.ShouldBindJSON(&mahasiswa)
+	err := ctx.ShouldBindJSON(&mah)
 	if err != nil {
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{
 			"message": "Cannot bind to json",
@@ -78,19 +79,20 @@ func (c *mahasiswaController) UpdateMahasiswa(ctx *gin.Context)  {
 		return
 	}
 
-	newMaha, err := c.mahasiswaService.UpdateMahasiswa(mahasiswa, nim)
+	newmah, err := c.mahasiswaService.UpdateMahasiswa(mah, nim)
 	if err != nil {
 		ctx.JSON(http.StatusOK, gin.H{
 		"message": "Update success",
-		"result":  newMaha,
+		"result":  newmah,
 		})		
 	}else{
 		ctx.JSON(http.StatusUnprocessableEntity, gin.H{
-			"message": "Cannot update Mahasiswas",
+			"message": "Cannot update Dosens",
 		})
 		return
 	}
 }
+
 
 func (c *mahasiswaController) DeleteMahasiswa(ctx *gin.Context) {
 

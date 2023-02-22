@@ -10,7 +10,7 @@ import (
 type MahasiswaRepository interface {
 	CreateMahasiswa(mahasiswa entity.Mahasiswa) (entity.Mahasiswa, error)
 	ReadMahasiswa() ([]entity.Mahasiswa, error)
-	UpdateMahasiswa(mahasiswa entity.Mahasiswa) (entity.Mahasiswa, error)
+	UpdateMahasiswa(mahasiswa entity.Mahasiswa) (entity.Mahasiswa,  error)
 	DeleteMahasiswa(mahasiswa entity.Mahasiswa) error
 }
 
@@ -23,7 +23,7 @@ func NewMahasiswaRepository(db *sql.DB) *mahasiswaRepository {
 }
 
 func (r *mahasiswaRepository) CreateMahasiswa(mahasiswa entity.Mahasiswa) (entity.Mahasiswa, error)  {
-	sqlStatement := `INSERT INTO mahasiswa (nim, nama_Mahasiswa, tanggal_lahir, alamat, jenis_kelamin) VALUES ($1, $2, $3, $4) RETURNING *`
+	sqlStatement := `INSERT INTO mahasiswa(nim, nama_Mahasiswa, tanggal_lahir, alamat, jenis_kelamin) VALUES($1, $2, $3, $4, $5) RETURNING *`
 	err := r.db.QueryRow(sqlStatement,
 		mahasiswa.Nim,
 		mahasiswa.NamaMahasiswa,
@@ -41,6 +41,7 @@ func (r *mahasiswaRepository) CreateMahasiswa(mahasiswa entity.Mahasiswa) (entit
 	return mahasiswa, nil
 }
 
+
 func (r *mahasiswaRepository) ReadMahasiswa() ([]entity.Mahasiswa, error)  {
 	var result []entity.Mahasiswa
 	sqlStatement := "SELECT * FROM mahasiswa"
@@ -48,7 +49,6 @@ func (r *mahasiswaRepository) ReadMahasiswa() ([]entity.Mahasiswa, error)  {
 		if err != nil {
 		log.Fatal(err)
 	}
-
 
 	defer data.Close()
 
@@ -70,33 +70,25 @@ func (r *mahasiswaRepository) ReadMahasiswa() ([]entity.Mahasiswa, error)  {
 	return result, nil
 }
 
-func (r *mahasiswaRepository) UpdateMahasiswa(mahasiswa entity.Mahasiswa) (entity.Mahasiswa, error) {
-	sqlStatement := `
-	UPDATE mahasiswa
-	SET nama_mahasiswa = $1, tanggal_lahir = $2, alamat = $3, jenis_kelamin = $4
-	WHERE nim = $5 
+func (r *mahasiswaRepository) UpdateMahasiswa (mahasiswa entity.Mahasiswa) (entity.Mahasiswa,  error)  {
+	sqlStatement := `UPDATE mahasiswa
+	SET nama_mahasiswa = $1, 
+	tanggal_lahir = $2, 
+	alamat = $3, 
+	jenis_kelamin = $4 
+	WHERE nim =$5
 	`
-	err := r.db.QueryRow(
-		sqlStatement,
-		mahasiswa.NamaMahasiswa,
-		mahasiswa.TanggalLahir,
-		mahasiswa.Alamat,
-		mahasiswa.JenisKelamin,
-		mahasiswa.Nim).Scan(
-		&mahasiswa.Nim,
-		&mahasiswa.NamaMahasiswa,
-		&mahasiswa.TanggalLahir,
-		&mahasiswa.Alamat,
-		&mahasiswa.JenisKelamin)
+
+	err := r.db.QueryRow(sqlStatement, mahasiswa.NamaMahasiswa, mahasiswa.TanggalLahir, mahasiswa.Alamat, mahasiswa.JenisKelamin, mahasiswa.Nim).Scan(&mahasiswa.Nim, &mahasiswa.NamaMahasiswa, &mahasiswa.TanggalLahir, &mahasiswa.Alamat, &mahasiswa.JenisKelamin)
+
 	if err != nil {
-		return mahasiswa, err
+		return mahasiswa, err 
 	}
 	return mahasiswa, nil
 }
 
-
 func (r *mahasiswaRepository) DeleteMahasiswa(mahasiswa entity.Mahasiswa)error  {
-	sqlStatement := "DELETE FROM Mahasiswa WHERE nip =$1"
+	sqlStatement := "DELETE FROM Mahasiswa WHERE nim =$1"
 
 	err := r.db.QueryRow(sqlStatement, mahasiswa.Nim)
 

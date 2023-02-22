@@ -75,8 +75,8 @@ func main()  {
 	mahasiswas := router.Group("/mahasiswas")
 	mahasiswas.GET("", mahasiswaController.ReadMahasiswa)
 	mahasiswas.POST("", mahasiswaController.CreateMahasiswa)
-	mahasiswas.PUT("/:nip",mahasiswaController.UpdateMahasiswa)
-	mahasiswas.DELETE("/:nip",mahasiswaController.DeleteMahasiswa)
+	mahasiswas.PUT("/:nim",mahasiswaController.UpdateMahasiswa)
+	mahasiswas.DELETE("/:nim", mahasiswaController.DeleteMahasiswa)
 
 	PORT := ":8080"
 	router.Run(PORT)
