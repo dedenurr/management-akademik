@@ -21,12 +21,11 @@ Di sisi back office, admin dapat melakukan CRUD category, event, ticket, dan mel
 Download terlebih dahulu library-library yang akan digunakan:
     
     go get -u "github.com/gin-gonic/gin"
-    go get -u "github.com/lib/pq"   
+    go get -u "github.com/lib/pq"
     go get -u "github.com/rubenv/sql-migrate"
     go get -u "github.com/gobuffalo/packr/v2"
     go get -u "github.com/joho/godotenv"
-    go get -u "github.com/cloudinary/cloudinary-go"
-    go get -u "github.com/cloudinary/cloudinary-go/api/uploader"
+    go get -u "github.com/appleboy/gin-jwt/"
 
 ### Authorization
     
