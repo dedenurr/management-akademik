@@ -30,6 +30,10 @@ Download terlebih dahulu library-library yang akan digunakan:
     
     JWT Token
 
+### Run App
+    
+    go run main.go
+
 
 ### Ada 4 jenis API  :
 | Path                   | Deskripsi                                                                  |
