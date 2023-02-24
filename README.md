@@ -1,9 +1,9 @@
 # final-project-management-akademik
 API untuk Manajemen Akademik yang berfungsi untuk memonitoring nilai akademik mahasiswa  dalam perkuliahan pada sebuah universitas. Untuk membangun API ini teridiri dari beberapa entitas diantaranya:
-    1. mahasiswa
-    2. dosen
-    3. matakuliah
-    4. perkuliahan
+### Entitas
+    1. Go versi 1.19
+    2. Framework Go Gin
+    3. Postgres
 
 ## Resource
 * Railway : https://management-akademik-production.up.railway.app/
