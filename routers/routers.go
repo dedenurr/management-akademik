@@ -36,7 +36,7 @@ func SetupRouter(DB *sql.DB) *gin.Engine {
 	auth.GET("/refresh_token", middleware.JWTMiddleware().RefreshHandler)
 	auth.Use(middleware.JWTMiddleware().MiddlewareFunc())
 	{
-	  auth.GET("/hello",middleware.HelloHandler)
+	  router.GET("/hello",middleware.HelloHandler)
 	
 	// === jwt
 		//router dosens
