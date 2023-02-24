@@ -23,6 +23,7 @@ func NewDosenController(dosenService service.DosenService) *dosenController {
 	return &dosenController{dosenService}
 }
 
+
 func (c *dosenController) CreateDosen(ctx *gin.Context) {
 	var dosen entity.Dosen
 
@@ -65,6 +66,9 @@ func (c *dosenController) ReadDosen(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, result)
 }
 
+
+
+
 func (c *dosenController) UpdateDosen(ctx *gin.Context)  {
 	var dos entity.Dosen
 
@@ -91,6 +95,7 @@ func (c *dosenController) UpdateDosen(ctx *gin.Context)  {
 		return
 	}
 }
+
 
 func (c *dosenController) DeleteDosen(ctx *gin.Context) {
 

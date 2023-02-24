@@ -22,6 +22,7 @@ func NewDosenService(dosenRepository repository.DosenRepository) *dosenService {
 	return &dosenService{dosenRepository}
 }
 
+
 func (s *dosenService) CreateDosen(dosen entity.Dosen)(entity.Dosen, error)  {
 	var dos entity.Dosen
 
