@@ -56,6 +56,6 @@ func main()  {
 	defer DB.Close()
 
 	// start server 
-	PORT := ":8080"
+	PORT := ":" + os.Getenv("PORT")
 	routers.SetupRouter(DB).Run(PORT) 
 } 
