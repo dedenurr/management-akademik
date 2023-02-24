@@ -7,7 +7,7 @@ API untuk Manajemen Akademik yang berfungsi untuk memonitoring nilai akademik ma
 
 ## Resource
 * Railway : https://management-akademik-production.up.railway.app/
-* Postman : https://documenter.getpostman.com/view/25656509/2s93CNMtFD
+* Postman : https://documenter.getpostman.com/view/16828940/2s93CNNYuT 
 * Slides  : https://drive.google.com/drive/u/4/folders/1Obl_Gt3MrK60SvzUdeWp-oTIdRUyfQXP
 
 ### Build With
@@ -31,15 +31,16 @@ Download terlebih dahulu library-library yang akan digunakan:
 
 
 ### Ada 4 jenis API  :
-| Path               | Deskripsi                                                                               |
-|--------------------|-----------------------------------------------------------------------------------------|
-| {{URL}} / bo / ... | API untuk back office, hanya boleh diakses oleh user dengan role admin (isAdmin = true) | 
-| {{URL}} / ...      | API yang berhubungan langsung dengan user/customer (isAdmin = false)                    |
-
+| Path                   | Deskripsi                                                                  |
+|------------------------|----------------------------------------------------------------------------|
+| {{URL}} / dosens       | API untuk Data Dosen                                                       | 
+| {{URL}} / mahasiswas   | API untuk Data Mahasiswa                                                   |
+| {{URL}} / matakuliahs  | API untuk Data MataKuliah                                                  |
+| {{URL}} / perkuliahans | API untuk Nilai Perkuliahan                                                |
 
 ### APIs
 #### URL
 ```
-https://final-project-ticketing-app-production.up.railway.app
+https://management-akademik-production.up.railway.app/
 ```
 
